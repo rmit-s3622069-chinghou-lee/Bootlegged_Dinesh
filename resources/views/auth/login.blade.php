@@ -1,156 +1,99 @@
-@extends('footer')
- 
- 
+<!doctype html>
+<html lang="{{ app()->getLocale() }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
+    <link rel="shortcut icon" href="assets/images/logo2.png" type="image/x-icon">
 
+    <!-- Title -->
+    <title>Bootlegged</title>
 
- <!doctype html>
-        <html lang="{{ app()->getLocale() }}">
-        <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-
-        <title>Bootlegged</title>
-
-        <!-- Fonts -->
-
-        <link href="https://fonts.googleapis.com/css?family=Yrsa" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="css/app.css">
-        
-  
-
-        <!-- Styles -->
-        <style>
-        p{margin: 0px;}
-
-          html, body {
-              background-color: #fff;
-              color: #636b6f;
-              font-family: 'Yrsa', serif;
-              /*font-weight: 500;*/
-              height: 500px;
-              margin: 0;
-              background-image: url(Images/back.jpg);
-              background-repeat: no-repeat; 
-              /*background-size: 1440px 700px;*/
-              background-size: 100% 120%;
-              /*-webkit-background-size: cover;*/
-              /*-moz-background-size: cover;*/
-              /*-o-background-size: cover;*/
-              /*background-size: cover;*/
-
-          }
-          
-          .form_box{
-            width: 50%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            resize: vertical;
-          }
-        </style>
-        </head>
-        <body> 
-
-        <div>
-               <img style=" position: absolute; display: inline;" class="logo"  alt ="logo" src="/Images/logo1.png">
-
-              <a href="{{URL::to('login')}}" style="float: right;margin-right: 100px; font-size: 19px; text-decoration: none; vertical-align:middle; " id="log" class="button">Login</a>
-             
-              <a href="/" style="float: right;margin-right: 60px; font-size: 19px; text-decoration: none; " id="log">Contact</a>
-              <a href="/"  id="log" style=" font-size: 19px; float: right; text-decoration: none; margin-right: 50px; ">FAQ</a>
-              <a href="/"  id="log" style=" font-size: 19px; float: right; text-decoration: none; margin-right: 50px; ">About</a>
-
-
-              <a href="/" id="log" style="float: right;  margin-right:50px ; font-size: 19px; text-decoration: none;">Home
-                   </a>
-
-         
-          </div>    
-
-          <div class="para" id="home">
-              <ul>
-            <p style="font-size: 40px; ">WELCOME TO BOOTLEGGED</p>
-            <p style="color: white; font-size: 20px;" >Bootlegged is a peer to peer marketplace where buyers and sellers of alcoholic <br> bevergaes meet.We find potiential buyers for your excess inventory and uncover <br>buying opportunities for you in real time</p>
-            </ul>
-        </div>
-
-     <!-- Login Div -->
-
-        <div class="moving_size" style="height: 475px;">
-            <img src="Images/About.png" name="about_pic" class="about_pic">
-          
-         <div class="about" id="about" style="margin-top: -450px;">
-
-                <div class="card-header">{{ __('Login') }}</div><br><br>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+</head>
+<head>
+<body id="login-body">
+<nav class="navbar navbar-expand-md navbar-dark" id="nav-login">
+    <div class="container">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar3SupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse text-center justify-content-center" id="navbar3SupportedContent">
+            <a class="ml-3 btn navbar-btn btn-primary" href="/">Home</a>
         </div>
     </div>
-</div>
-</div>
-</div>
+</nav>
+    <div class="container-fluid" id="login-container-fluid">
+    <div id="login">
+        <div class="col-md-6 offset-md-3">
+            <div class="img-fluid py-3"></div>
+            @if(session()->has('message'))
+                <div class="alert alert-info">
+                    {{ session()->get('message') }}
+                </div>
+            @endif
 
- @yield('footer')
+            <form class="form-signin" method="POST" action="{{ route('login') }}">
+                @csrf
+                <div class="text-center mb-4">
+                    <img class="mb-4" src="{{ asset('images/logo1.png') }}" alt="" id="login-logo">
+                    <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+                </div>
+                <div class="form-label-group">
+                    <input id="email" type="email" placeholder="E-mail" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+                    <label for="email">{{ __('E-Mail Address') }}</label>
+                    @if ($errors->has('email'))
+                        <span class="invalid-feedback">
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
+                    @endif
+                </div>
 
-        </body>
-        </html>
+                <div class="form-label-group">
+                    <input id="password" type="password" placeholder="Password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                    <label for="password">{{ __('Password') }}</label>
+                    @if ($errors->has('password'))
+                        <span class="invalid-feedback">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                    @endif
+                </div>
+
+                <div class="checkbox mb-3">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}
+                        </label>
+                    </div>
+                </div>
+
+
+                <button type="submit" class="btn btn-lg btn-primary btn-block">
+                    {{ __('Login') }}
+                </button>
+                <div class="row">
+                    <a class="col-6 btn btn-link text-left pl-0 text-white" href="{{ route('password.request') }}">
+                        {{ __('Forgot Your Password?') }}
+                    </a>
+                    <a class="col-6 btn btn-link text-right pr-0 text-white" href="{{ route('register') }}">
+                        {{ __('Create your account') }}
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+</head>
+
+
+@section('additional_scripts')
+    @parent
+    <script>
+        $("form").on('submit', function() {
+            window.displayLoader();
+        });
+    </script>
+@endsection
+    </body>
+</html>

@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 // Route::get('home', function(){
@@ -31,7 +31,7 @@ Route::get('choose', function(){
     return View('choose'); // Your Blade template name
 });
 	
-Route::get('login', function(){
+Route::get('/login', function(){
     return View('login'); // Your Blade template name
 });
 Auth::routes();
